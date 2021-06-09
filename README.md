@@ -8,3 +8,7 @@
   #for Example http://localhost:8080/league/v1/standing/SummerTrack/England/Atletico
 
 
+#Run via maven 
+	#
+
+#Required Java 8
