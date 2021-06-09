@@ -1,4 +1,10 @@
 # league
 #This application is designe to carry out football league.
-## Mavne based micro serive
+## Maven based micro serive
+
+
+#API
+  #http://localhost:8080/league/v1/standing/leagueName/countryName/teamName
+  #for Example http://localhost:8080/league/v1/standing/SummerTrack/England/Atletico
+
 
