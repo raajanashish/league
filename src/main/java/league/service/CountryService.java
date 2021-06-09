@@ -19,7 +19,7 @@ public class CountryService {
 
 	}
 
-	public void initCountryData() {
+	public static void initCountryData() {
 		countries.put(1, new Country(1, "England"));
 		countries.put(2, new Country(2, "Spain"));
 		countries.put(3, new Country(3, "France"));

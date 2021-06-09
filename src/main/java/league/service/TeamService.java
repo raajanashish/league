@@ -19,9 +19,9 @@ public class TeamService {
 	}
 
 	
-	public void  initTeamData() {
+	public static void  initTeamData() {
 		
-		teams.put(1, new Team(1, "Atletico Madrid"));
+		teams.put(1, new Team(1, "Atletico"));
 		teams.put(2, new Team(2, "Oblak"));
 		teams.put(3, new Team(3, "Champio"));
 	}

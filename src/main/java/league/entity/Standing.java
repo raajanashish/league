@@ -13,7 +13,8 @@ public class Standing implements GenericStanding {
 	private String leagueName;
 	private Integer teamId;
 	private String teamName;
-
+	private Integer overallLeaguePosition;
+	
 	public String getCountryName() {
 		return countryName;
 	}
@@ -94,6 +95,4 @@ public class Standing implements GenericStanding {
 	public void setTeamId(Integer teamId) {
 		this.teamId = teamId;
 	}
-
-	private Integer overallLeaguePosition;
 }

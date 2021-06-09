@@ -1,15 +1,18 @@
 package league.dtos;
 
-public class StandingDto {
+public class StandingDto extends ResponseDto {
 	private Integer id;
 	private String countryName;
 	private String countrrId;
 	private Integer leagueId;
 	private String leagueName;
-
+	private Integer overallLeaguePosition;
+	
+	
 	public Integer getId() {
 		return id;
 	}
+
 
 	public void setId(Integer id) {
 		this.id = id;
@@ -65,4 +68,13 @@ public class StandingDto {
 
 	private Integer teamId;
 	private String teamName;
+
+	public Integer getOverallLeaguePosition() {
+		return overallLeaguePosition;
+	}
+
+
+	public void setOverallLeaguePosition(Integer overallLeaguePosition) {
+		this.overallLeaguePosition = overallLeaguePosition;
+	}
 }

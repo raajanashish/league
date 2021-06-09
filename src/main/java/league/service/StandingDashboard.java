@@ -3,9 +3,11 @@ package league.service;
 import java.util.HashMap;
 import java.util.Map;
 
+import org.springframework.stereotype.Service;
+
 import league.entity.Standing;
 import league.entity.StandingMapping;
-
+@Service
 public class StandingDashboard {
 
 	// here other cache can be used loke redis/ elastic cache
@@ -23,7 +25,7 @@ public class StandingDashboard {
 
 	}
 
-	public void initStandingData() {
+	public static void initStandingData() {
 		standings.put(1,
 				new Standing(1, CountryService.countries.get(1).getCountryId(),
 						CountryService.countries.get(1).getCountryName(), LeagueService.leagues.get(1).getLeagueId(),
@@ -34,7 +36,7 @@ public class StandingDashboard {
 						CountryService.countries.get(2).getCountryName(), LeagueService.leagues.get(1).getLeagueId(),
 						LeagueService.leagues.get(1).getLeagueName(), TeamService.teams.get(2).getTteamId(),
 						TeamService.teams.get(2).getTeamName(), 2));
-		standings.put(2,
+		standings.put(3,
 				new Standing(3, CountryService.countries.get(3).getCountryId(),
 						CountryService.countries.get(3).getCountryName(), LeagueService.leagues.get(1).getLeagueId(),
 						LeagueService.leagues.get(1).getLeagueName(), TeamService.teams.get(3).getTteamId(),
@@ -42,7 +44,7 @@ public class StandingDashboard {
 
 	}
 
-	public void initStandingMapping() {
+	public static void initStandingMapping() {
 		int sid =1;
 		standingMaping.put("1_1_1", new StandingMapping(standings.get(sid).getId(), 
 				standings.get(sid).getLeagueId(), standings.get(sid).getCountrrId(), standings.get(sid).getTeamId()));

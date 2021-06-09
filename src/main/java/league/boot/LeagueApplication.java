@@ -6,7 +6,7 @@ import org.springframework.boot.autoconfigure.domain.EntityScan;
 import org.springframework.boot.autoconfigure.jdbc.DataSourceAutoConfiguration;
 import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 
-@SpringBootApplication(exclude = {DataSourceAutoConfiguration.class })
+@SpringBootApplication(exclude = { DataSourceAutoConfiguration.class }, scanBasePackages = { "league" })
 //@EnableJpaRepositories("league.repositories")
 @EntityScan("league.entity")
 public class LeagueApplication {
@@ -18,6 +18,6 @@ public class LeagueApplication {
 	}
 
 	private static void initApplicationData() {
-		
+		LoadApplicationData.initApplicationSeedData();
 	}
 }

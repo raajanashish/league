@@ -18,7 +18,7 @@ public class LeagueService {
 				.map(Map.Entry::getKey).findFirst().orElse(null);
 	}
 
-	public void initLeagueData() {
+	public static  void initLeagueData() {
 		leagues.put(1, new League(1, "SummerTrack"));
 		leagues.put(2, new League(2, "Winter-track"));
 

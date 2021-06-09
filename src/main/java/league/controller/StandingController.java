@@ -9,8 +9,10 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import league.dtos.ResponseDto;
 import league.dtos.StandingDto;
 import league.entity.Standing;
+import league.exception.StandingException;
 import league.mapper.StandingMapper;
 import league.service.StandingServce;
 
@@ -23,18 +25,32 @@ public class StandingController {
 	@Autowired
 	private StandingMapper standingMapper;
 
-	@GetMapping("standing/{leagueName}/{countryName}/{teamName}")
-	public ResponseEntity<StandingDto> getStanding(@PathVariable String leagueName, @PathVariable String countryName,
+	@GetMapping(path = "standing/{leagueName}/{countryName}/{teamName}", produces = "application/json")
+	public ResponseEntity<ResponseDto> getStanding(@PathVariable String leagueName, @PathVariable String countryName,
 			@PathVariable String teamName) {
 		try {
 			Standing standing = standingService.getStanding(leagueName, countryName, teamName);
-			return ResponseEntity.ok().body(standingMapper.convertToDto(standing));
+			if (standing != null) {
+				return ResponseEntity.ok().body(StandingMapper.mapper.map(standing, StandingDto.class));
+			}
+
+			return ResponseEntity.ok().body(new ResponseDto("No Standing configured ..."));
+		} catch (StandingException e) {
+			String msg = "Encountered error while getting Standing. Please contact to team.";
+			if (!e.getMessage().isEmpty()) {
+				msg = e.getMessage();
+			}
+			return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(new ResponseDto(msg));
 		} catch (Exception e) {
-			return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).build();
+			String msg = "Encountered error while getting Standing. Please contact to team.";
+			if (!e.getCause().getLocalizedMessage().isEmpty()) {
+				msg = e.getMessage();
+			}
+			return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(new ResponseDto(msg));
 		}
 
 	}
-	
+
 	@GetMapping("hello")
 	public ResponseEntity<String> hellowWorld() {
 		try {
@@ -44,7 +60,5 @@ public class StandingController {
 		}
 
 	}
-	
-	
 
 }
